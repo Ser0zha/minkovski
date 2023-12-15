@@ -68,16 +68,20 @@ class Board:
 
 # настройка окна вывода
 display.set_caption("Minkowski_sum")
+img = image.load("icons.png")
+display.set_icon(img)
+XPOS = 1200
+YPOS = 800
+X_center = (XPOS // 2)
+Y_center = (YPOS // 2)
+
+# цвета
 WHITE = (255, 255, 255)
 RED = (255, 0, 0)
 GRAY = (100, 100, 100)
 BLACK = (0, 0, 0)
 BLUE = (0, 0, 255)
 GREEN = (0, 255, 0)
-XPOS = 1200
-YPOS = 800
-X_center = (XPOS // 2)
-Y_center = (YPOS // 2)
 
 # необходимые переменные и хранилища
 counter = -1
@@ -124,6 +128,7 @@ for i in a:
     if counter == -1:
         counter = i
     carton.append(case[i])
+
 # добавим первую точку для правильной отрисовки
 carton.append(case[counter])
 
