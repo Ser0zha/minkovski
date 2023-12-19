@@ -24,7 +24,6 @@ def convexhull(points):
     leftmost_idx = points.index(leftmost)
     result = []
     value1 = leftmost_idx
-    value2 = None
     while True:
         result.append(points[value1])
         value2 = (value1 + 1) % n
