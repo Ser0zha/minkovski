@@ -3,12 +3,11 @@ import os
 
 
 # Функция для определения направления поворота
-def orientation(p, q, r):
-    val = (q[1] - p[1]) * (r[0] - q[0]) - (q[0] - p[0]) * (r[1] - q[1])
-
-    if val == 0:
+def route(value1, value2, value3):
+    difference = (value2[1] - value1[1]) * (value3[0] - value2[0]) - (value2[0] - value1[0]) * (value3[1] - value2[1])
+    if difference == 0:
         return 0  # коллинеарные точки
-    elif val > 0:
+    elif difference > 0:
         return 1  # против часовой стрелки
     else:
         return 2  # по часовой стрелке
@@ -23,19 +22,19 @@ def convexhull(points):
     # Находим самую левую точку
     leftmost = min(points, key=lambda x: x[0])
     leftmost_idx = points.index(leftmost)
-    hull1 = []
-    p = leftmost_idx
-    q = None
+    result = []
+    value1 = leftmost_idx
+    value2 = None
     while True:
-        hull1.append(points[p])
-        q = (p + 1) % n
-        for r in range(n):
-            if orientation(points[p], points[q], points[r]) == 2:
-                q = r
-        p = q
-        if p == leftmost_idx:
+        result.append(points[value1])
+        value2 = (value1 + 1) % n
+        for value3 in range(n):
+            if route(points[value1], points[value2], points[value3]) == 2:
+                value2 = value3
+        value1 = value2
+        if value1 == leftmost_idx:
             break
-    return hull1
+    return result
 
 
 # подсчёт суммы минковского
